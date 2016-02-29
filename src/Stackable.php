@@ -26,7 +26,7 @@ class Stackable
     /**
      * Get single container data
      * @param $containerId
-     * @return bool|mixed
+     * @return array
      */
     public function getContainer($containerId)
     {
@@ -36,7 +36,7 @@ class Stackable
     /**
      * Get array of specified container items
      * @param $containerId
-     * @return bool|mixed
+     * @return array
      */
     public function getContainerItems($containerId)
     {
@@ -45,7 +45,7 @@ class Stackable
 
     /**
      * Get all items from stack
-     * @return bool|mixed
+     * @return array
      */
     public function getAllItems()
     {
@@ -55,7 +55,7 @@ class Stackable
     /**
      * Get single item data
      * @param $itemId
-     * @return bool|mixed
+     * @return array
      */
     public function getItem($itemId)
     {
@@ -66,7 +66,7 @@ class Stackable
     /**
      * Do curl to API to get requested data
      * @param $path
-     * @return bool|mixed
+     * @return array
      */
     private function getData($path)
     {
@@ -83,6 +83,6 @@ class Stackable
 		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		curl_close($ch);
 
-		return ($httpcode >= 200 && $httpcode < 300) ? $data : false;
+		return ($httpcode >= 200 && $httpcode < 300) ? json_decode($data) : false;
 	}
 }
