@@ -1,44 +1,77 @@
 <?php
 
-class Stackable {
-	const API_VERSION = 'v1';
-	const API_URL = 'http://api.stackable.space';
+/**
+ * Core Stackable API class
+ */
+class Stackable
+{
+    const API_VERSION = 'v1';
+    const API_URL = 'http://api.stackable.space';
 
-	private $token = null;
+    private $token = null;
 
-	function __construct($token) 
-	{
-       $this->token = $token;
-   	}
+    function __construct($token)
+    {
+        $this->token = $token;
+    }
 
-	public function getContainers() 
-	{
-		return $this->getData('containers');
-	}
+    /**
+     * Get array of containers in stack
+     */
+    public function getContainers()
+    {
+        return $this->getData('containers');
+    }
 
-	public function getContainer($containerId) 
-	{
-		return $this->getData('containers/' . $containerId);
-	}
+    /**
+     * Get single container data
+     * @param $containerId
+     * @return bool|mixed
+     */
+    public function getContainer($containerId)
+    {
+        return $this->getData('containers/' . $containerId);
+    }
 
-	public function getContainerItems($containerId) 
-	{
-		return $this->getData('containers/' . $containerId. '/items');
-	}
+    /**
+     * Get array of specified container items
+     * @param $containerId
+     * @return bool|mixed
+     */
+    public function getContainerItems($containerId)
+    {
+        return $this->getData('containers/' . $containerId . '/items');
+    }
 
-	public function getAllItems() 
-	{
-		return $this->getData('items');
-	}
+    /**
+     * Get all items from stack
+     * @return bool|mixed
+     */
+    public function getAllItems()
+    {
+        return $this->getData('items');
+    }
 
-	public function getItem($itemId) 
-	{
-		return $this->getData('items/' . $itemId);
-	}
+    /**
+     * Get single item data
+     * @param $itemId
+     * @return bool|mixed
+     */
+    public function getItem($itemId)
+    {
+        return $this->getData('items/' . $itemId);
+    }
 
-	private function getData($path) 
-	{
-		$url = self::API_URL . '/' self::API_VERSION . '/' . $path . '?token=' . $this->token;
+
+    /**
+     * Do curl to API to get requested data
+     * @param $path
+     * @return bool|mixed
+     */
+    private function getData($path)
+    {
+        $url = self::API_URL . '/' . self::API_VERSION . '/' . $path . '?token=' . $this->token;
+
 		//do curl
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
@@ -49,6 +82,7 @@ class Stackable {
 		$data = curl_exec($ch);
 		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		curl_close($ch);
-		return ($httpcode>=200 && $httpcode<300) ? $data : false;
+
+		return ($httpcode >= 200 && $httpcode < 300) ? $data : false;
 	}
 }
