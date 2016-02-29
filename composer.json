@@ -1,0 +1,25 @@
+{
+    "name": "get-stackable/stackable-php",
+    "description": "Official Stackable library for PHP",
+    "keywords": ["stackable", "library"],
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.6",
+        "fabpot/php-cs-fixer": "~1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Package\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vendor\\Package\\": "tests"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
