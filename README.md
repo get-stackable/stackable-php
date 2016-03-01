@@ -58,7 +58,7 @@ $result = $stackable->getItem('ITEM-ID-HERE');
 print_r($result);
 ```
 
-To play with this library: (https://beta.tehplayground.com/D85vaCf8xDxKeb8S)[https://beta.tehplayground.com/D85vaCf8xDxKeb8S]
+To play with this library: [https://beta.tehplayground.com/D85vaCf8xDxKeb8S](https://beta.tehplayground.com/D85vaCf8xDxKeb8S)
 
 ## Todo
 
