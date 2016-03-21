@@ -6,7 +6,7 @@
 class Stackable
 {
     const API_VERSION = 'v1';
-    const API_URL = 'http://api.stackable.space';
+    const API_URL = 'https://api.stackable.space';
 
     private $token = null;
 
